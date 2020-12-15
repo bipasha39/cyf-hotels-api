@@ -1,9 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const router = require("./router.js");
-const { setupDB } = require("./migrations");
-
-setupDB();
 
 const app = express();
 app.use(bodyParser.json());
