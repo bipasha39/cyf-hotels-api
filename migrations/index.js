@@ -2,20 +2,15 @@ const { doesNotMatch } = require("assert");
 const fs = require("fs");
 const { pool } = require("../db.js");
 
-function run(number) {
+function setupDB() {
   pool
-    .query(fs.readFileSync("migrations/" + number + ".sql").toString())
+    .query(fs.readFileSync("migrations/initial_snapshot.sql").toString())
     .catch((e) => {
       console.error(e);
       process.exit(1);
     });
 }
 
-function setupDB() {
-  run(0);
-}
-
 module.exports = {
-  run: run,
   setupDB: setupDB,
 };
