@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-init": "node migrations/init.js",
     "db-seed": "node migrations/seed.js",
-    "db-migrate": "node migrations/migrate.js"
+    "db-migrate": "node migrations/migrate.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
