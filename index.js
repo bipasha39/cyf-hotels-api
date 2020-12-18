@@ -126,8 +126,19 @@ app.post("/customers", function (req, res) {
 app.put("/customers/:customerId", function (req, res) {
   const customerId = req.params.customerId;
   const newEmail = req.body.email;
+  const newAddress = req.body.address;
+  const newCity = req.body.city;
+  const newPostcode = req.body.postcode;
+ 
+
+  if (newEmail==="") {
+    return res
+      .status(400)
+      .send("please provide email");
+  }
+
   pool
-    .query("UPDATE customers SET email=$1 WHERE id=$2", [newEmail, customerId])
+    .query("UPDATE customers SET email=$1,id=$2,address=$3,city=$4,postcode=$5",[newEmail, customerId,newAddress,newCity,newPostcode])
     .then(() => res.send(`Customer ${customerId} updated!`))
     .catch((e) => res.status(500).send("Something went wrong"));
 });
@@ -163,3 +174,5 @@ app.delete("/hotels/:hotelId", function (req, res) {
 app.listen(3000, function() {
   console.log("Server is listening on port 3000. Ready to accept requests!");
 });
+
+////... for creating new git repository  first thing is git init, git add.,git commit,url print,git push master not main/////
